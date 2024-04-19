@@ -24,12 +24,15 @@ class SingleLinkedList():
         a = self.head
         var = 0
         if index == 0:
+            new_node.next = self.head
             self.head = new_node
         else:
             while a is not None and var < index - 1:
                 var += 1
-                a.
+                a = a.next
             a.next = new_node
+            new_node.next = a.next
+            self.head = 
 
 
 l = SingleLinkedList(Node(3))
