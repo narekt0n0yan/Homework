@@ -21,23 +21,23 @@ class SingleLinkedList():
         a.next = new_node
 
     def insert(self, new_node, index):
-        a = self.head
-        var = 0
         if index == 0:
             new_node.next = self.head
             self.head = new_node
         else:
+            a = self.head
+            var = 0
             while a is not None and var < index - 1:
                 var += 1
                 a = a.next
             a.next = new_node
             new_node.next = a.next
-            self.head = 
+
 
 
 l = SingleLinkedList(Node(3))
 l.append(Node(5))
 l.append(Node(6))
 l.append(Node(11))
-l.insert(Node(7), 2)
+l.insert(Node(7), 1)
 l.traverse()
