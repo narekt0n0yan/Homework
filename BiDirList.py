@@ -38,6 +38,23 @@ class BiDirList():
             result += str(a.value) + ' '
             a = a.next
         return result
+    def delete(self, index):
+        a = self.head
+        if index == 0:
+            self.head = a.next
+        else:
+            var = 0
+            while a is not None and var < index - 1:
+                a = a.next
+                var += 1
+            a.next = a.next.next
+            a.next.prev = a
+
+
+
+
+
+
 
 l = BiDirList(BiNode(1))
 l.append(BiNode(2))
@@ -45,4 +62,5 @@ l.append(BiNode(3))
 l.append(BiNode(4))
 l.append(BiNode(5))
 l.append(BiNode(6))
+l.delete(1)
 print(l)
