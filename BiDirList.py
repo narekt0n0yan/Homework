@@ -9,6 +9,22 @@ class BiDirList():
     def __init__(self, head=None):
         self.head = head
 
+    def __repr__(self):
+        a = self.head
+        result = ''
+        while a is not None:
+            result += str(a.value) + ' '
+            a = a.next
+        return result
+
+    def __getitem__(self, index):
+        a = self.head
+        var = 0
+        while a is not None and var < index:
+            a = a.next
+            var += 1
+        return a.value
+
     def append(self, new_node):
         a = self.head
         while a.next is not None:
@@ -31,13 +47,6 @@ class BiDirList():
             new_node.prev = a
             a.next = new_node
 
-    def __repr__(self):
-        a = self.head
-        result = ''
-        while a is not None:
-            result += str(a.value) + ' '
-            a = a.next
-        return result
     def delete(self, index):
         a = self.head
         if index == 0:
@@ -49,17 +58,6 @@ class BiDirList():
                 var += 1
             a.next = a.next.next
             a.next.prev = a
-
-    def __getitem__(self, index):
-        a = self.head
-        var = 0
-        while a is not None and var < index:
-            a = a.next
-            var += 1
-        return a.value
-
-
-
 
 
 l = BiDirList(BiNode(1))
