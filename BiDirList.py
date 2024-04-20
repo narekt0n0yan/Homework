@@ -1,26 +1,22 @@
-class Node():
+class BiNode():
     def __init__(self, value):
         self.value = value
         self.next = None
+        self.prev = None
 
 
-class SingleLinkedList():
+class BiDirList():
     def __init__(self, head=None):
         self.head = head
-
-    def traverse(self):
-        a = self.head
-        while a is not None:
-            print(a.value)
-            a = a.next
 
     def append(self, new_node):
         a = self.head
         while a.next is not None:
             a = a.next
         a.next = new_node
+        new_node.prev = a
 
-    def insert(self, new_node, index):
+    def insert(self, index, new_node):
         if index == 0:
             new_node.next = self.head
             self.head = new_node
@@ -28,17 +24,12 @@ class SingleLinkedList():
             a = self.head
             var = 0
             while a is not None and var < index - 1:
-                var += 1
                 a = a.next
+                var += 1
             new_node.next = a.next
+            a.next.prev = new_node
+            new_node.prev = a
             a.next = new_node
-
-    def __add__(self, other):
-        a = self.head
-        while a.next is not None:
-            a = a.next
-        a.next = other.head
-        return self
 
     def __repr__(self):
         a = self.head
@@ -48,21 +39,10 @@ class SingleLinkedList():
             a = a.next
         return result
 
-
-
-
-
-
-l = SingleLinkedList(Node(3))
-l.append(Node(5))
-l.append(Node(6))
-l.append(Node(11))
-l.insert(Node(7), 3)
+l = BiDirList(BiNode(1))
+l.append(BiNode(2))
+l.append(BiNode(3))
+l.append(BiNode(4))
+l.append(BiNode(5))
+l.append(BiNode(6))
 print(l)
-
-ol = SingleLinkedList(Node(1))
-ol.append(Node(2))
-ol.append(Node(3))
-print(ol)
-print(ol + l)
-# print(ol.__add__(l))
