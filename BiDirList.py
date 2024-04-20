@@ -50,7 +50,13 @@ class BiDirList():
             a.next = a.next.next
             a.next.prev = a
 
-
+    def __getitem__(self, index):
+        a = self.head
+        var = 0
+        while a is not None and var < index:
+            a = a.next
+            var += 1
+        return a.value
 
 
 
@@ -64,3 +70,4 @@ l.append(BiNode(5))
 l.append(BiNode(6))
 l.delete(1)
 print(l)
+print(l[3])
