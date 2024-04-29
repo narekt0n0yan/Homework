@@ -1,4 +1,15 @@
 def solution(n: int):
+    n = str(n)
+    first_half = 0
+    for i in n[:len(n)//2]:
+        first_half += int(i)
+    second_half = 0
+    for j in n[len(n)//2:]:
+        second_half += int(j)
+    if first_half == second_half:
+        return True
+    else:
+        return False
 
 
 
