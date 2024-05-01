@@ -15,9 +15,6 @@ def solution(picture):
 print(solution( ["abc",
                  "ded"]))
 
-a = "abc"
-a = list(a)
 
-print(a)
 
             
