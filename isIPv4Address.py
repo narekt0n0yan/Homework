@@ -14,8 +14,8 @@ def solution(arr: str):
             return False
     return True
 
-# print(solution('172.16.254.1'))    
-# print(solution(".254.255.0"))    
-# print(solution("01.233.161.131"))    
-# print(solution('172.16.254.1'))   
+print(solution('172.16.254.1'))    
+print(solution(".254.255.0"))    
+print(solution("01.233.161.131"))    
+print(solution('172.16.254.1'))   
 print(solution('156..'))
