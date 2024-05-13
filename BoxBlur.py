@@ -1,4 +1,4 @@
-
+from ZeroMatrix import zeromatrix
 def solution(image: list):
     matrix_list = []
     for _ in range(len(image)-2): 
@@ -10,7 +10,15 @@ def solution(image: list):
     
     for i in range(len(matrix_list)):
         for j in range(len(matrix_list[0])):
-            matrix_list[i][j] = (image[i+1][j+1] + image[i][j+1] + image[i+2][j+1] + image[i+1][j] + image[i+1][j+2] + image[i+2][j+2] + image[i+2][j] + image[i][j+2] + image[i][j])//9
+            matrix_list[i][j] = (image[i + 1][j + 1] 
+                                 + image[i][j + 1] 
+                                 + image[i + 2][j + 1] 
+                                 + image[i + 1][j] 
+                                 + image[i + 1][j + 2] 
+                                 + image[i + 2][j + 2]
+                                + image[i + 2][j] 
+                                + image[i][j + 2] 
+                                + image[i][j]) // 9
     return matrix_list
 
     
