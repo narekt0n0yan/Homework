@@ -13,8 +13,7 @@ X = [[1,2],
 Y = [0,0,0,0,0,
      1,1,1,1,1]
 
-
-
+ 
 
 def line(x, k, b) -> float:
     return k * x + b
@@ -27,12 +26,11 @@ def calc_RSS(X, k, b) -> float:
     return RSS
 
 def grad_RSS(X, k, b):
+    grad_k = 0
+    grad_b = 0
     for i in X:
-        grad_k = 0
-        grad_k = (2 * i[1] * i[0]) + (2 * k * i[0] ** 2) + (2 * i[0] * b)
-    for i in X:
-        grad_b = 0
-        grad_b = (-2 * i[1]) + (2 * k * i[0]) + (2 * b) 
+        grad_k += (2 * i[1] * i[0]) + (2 * k * i[0] ** 2) + (2 * i[0] * b)
+        grad_b += (-2 * i[1]) + (2 * k * i[0]) + (2 * b) 
     return grad_b, grad_k
 
 print(calc_RSS (X, 0.5, 1))
