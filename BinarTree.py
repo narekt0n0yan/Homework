@@ -2,7 +2,10 @@ class Node():
     def __init__(self, value:int):
         self.right = None
         self.left  = None
-        self.value = value 
+        self.value = value
+
+    def __repr__(self) -> str:
+        return str(self.value)
 
 
 
@@ -39,43 +42,75 @@ class BinarTree():
         prev_node: Node = None
         if value == current_node.value:
             return False
+        is_left = False
         while current_node.value != value:
             if current_node.value > value:
                 prev_node = current_node
                 current_node = current_node.left
-            elif current_node.value < value:
+                is_left = True
+            if current_node.value < value:           
                 prev_node = current_node
                 current_node = current_node.right
-        prev_node.left = current_node.right
-        left = current_node.left
-        current_node = current_node.right
-        while current_node.left is not None:
-            current_node = current_node.left
-        current_node.left = left
+                is_left = False
+
+        print('HERE I AM', current_node, current_node.left, current_node.right, prev_node)
+        if current_node.left is None:
+            if  is_left:
+                prev_node.left = current_node.right
+                return  
+            else:
+                prev_node.right = current_node.right
+                return    
 
 
+        if current_node.right is None:
+            if is_left:
+                prev_node.left = current_node.left
+                return
+            else:
+                prev_node.right = current_node.left
 
+
+        prev_node.left = current_node.left
+        temp = current_node.left
+        while temp.right is not None:
+            temp = temp.right
+        temp.right = current_node.right
         
 
 
-
-    def find(self, value : int) -> bool:
+        
+              
+    def BedFind(self, value : int) -> bool:
+        is_find = False
         def rec_find(current:Node):
-            if current.left is None and current.right is None:
-                if current.value == value:
-                    print('True')
-            if current.left is not None:
-                rec_find(current.left)
-                if current.value == value:
-                    print('True')
-            if current.right is not None:
-                if current.value == value:
-                    print('True')
-                rec_find(current.right)
+           nonlocal is_find
+           if is_find:
+               return 
+           if current.value == value:
+               is_find = True
+               return 
+           if current.left is not None:
+               rec_find(current.left)
+           if current.right is not None:
+               rec_find(current.right)
         rec_find(self.root)
-                    
+        return is_find
 
 
+    def GoodFind(self, value:int) -> bool:
+        current = self.root
+        while current.left is not None and current.right is not None:
+            if current.value > value:
+                current = current.left
+            elif current.value < value:
+                current = current.right
+            else:
+                return True
+        return False
+           
+
+        
     
         
 def traverse(current:  Node):
@@ -114,14 +149,14 @@ l.add(21)
 l.add(23)
 l.add(17)
 l.add(18)
-l.add(19)
 l.add(27)
 l.add(99)
 traverse(l.root)
-l.find(800)
-
-#l.delete(11)
-
+#print(l.BedFind(8))
+#print(l.GoodFind(11))
+l.delete(23)
+print('')
+traverse(l.root)
 
 
 
