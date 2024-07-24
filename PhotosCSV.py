@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 NameList = os.listdir(r'C:\Users\narek\Рабочий стол\boocsv')
-
+print(NameList)
 ChangeNameList = []
 for i in range(len(NameList)):
     NameList[i] = NameList[i].split('.')
