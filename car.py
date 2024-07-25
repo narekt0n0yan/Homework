@@ -2,6 +2,8 @@
 
 
 class Car():
+    registerdata = set()
+
     def __init__(self,name: str, year: int, speed: float, consumption: float, tank_size: float) -> None:
         self.name = name
         self.year = year
@@ -10,6 +12,7 @@ class Car():
         self.consumption = consumption
         self.tank_size = tank_size
         self.litr = 0 
+    
 
         """
         Fields:
@@ -78,8 +81,9 @@ class Car():
                     therdTrue = True
                 else:
                     therdTrue = False
-            if firstTrue and secondTrue and therdTrue:
+            if firstTrue and secondTrue and therdTrue and stringnumber not in Car.registerdata :
                 self.sign = stringnumber
+                Car.registerdata.add(stringnumber) 
                 return True
             else:
                 return False
@@ -150,12 +154,19 @@ my_car = Car("Mustang",
              20,
              80
              )
+your_car = Car("Toyota",
+               2024,
+               120,
+               22,
+               85)
 
-print(my_car.calculate_time(150))
+# print(my_car.calculate_time(150))
 print(my_car.register('34YT827'))
-my_car.fill(50)
-my_car.fill(10)
-my_car.go(20)
-print(my_car.get_sign())
-print(my_car.get_fuel())
-print(my_car.max_distance_can_travel())
+# my_car.fill(50)
+# my_car.fill(10)
+# my_car.go(20)
+# print(my_car.get_sign())
+# print(my_car.get_fuel())
+# print(my_car.max_distance_can_travel())
+
+print(your_car.register('34YT826'))
