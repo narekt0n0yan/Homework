@@ -86,7 +86,7 @@ class Graph():
         return myDict
     
     def shortestpath(self,start,finish):
-        TempNodeList = self.nodeset().copy
+        TempNodeList = self.nodeset()
         Nodeslist = list(self.nodeset()) 
         TempNodewithNeighbour = self.nodewhitneighbor()
 
@@ -110,8 +110,6 @@ class Graph():
         
         while TempNodeList != outlist:
             currentlist = []
-            if current == float('inf'):
-                break
             for j in TempNodewithNeighbour[current]:
                 if j not in outlist:
                     currentlist.append(j)
@@ -124,6 +122,8 @@ class Graph():
             for k in currentlist:
                 if pathdict[k] < current:
                     current = k
+            print(outlist)
+            print(TempNodeList)
         
         print(pathdict[finish])
     
