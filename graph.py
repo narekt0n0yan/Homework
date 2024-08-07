@@ -11,29 +11,29 @@ b = [[1,2,2],
      [4,5,18],
     ]
 
-# # a = [
-#     [0,1,1],
-#     [1,2,3],
-#     [2,3,3],
-#     [3,4,4],
-#     [4,5,6],
-#     [5,6,12],
-#     [6,7,3],
-#     [7,8,6],
-#     [8,9,7],
-#     [9,0,8],
-#     [9,10,3],
-#     [10,1,1],
-#     [10,2,1],
-#     [10,11,20],
-#     [10,7,5],
-#     [11,2,3],
-#     [11,12,7],
-#     [12,3,4],
-#     [12,5,8],
-#     [12,6,4],
-#     [12,7,1],
-#     ]
+a = [
+    [0,1,1],
+    [1,2,3],
+    [2,3,3],
+    [3,4,4],
+    [4,5,6],
+    [5,6,12],
+    [6,7,3],
+    [7,8,6],
+    [8,9,7],
+    [9,0,8],
+    [9,10,3],
+    [10,1,1],
+    [10,2,1],
+    [10,11,20],
+    [10,7,5],
+    [11,2,3],
+    [11,12,7],
+    [12,3,4],
+    [12,5,8],
+    [12,6,4],
+    [12,7,1],
+    ]
 
 
 class Graph():
@@ -103,12 +103,17 @@ class Graph():
         for i in TempNodewithNeighbour[temp]:
             if pathdict[i] > pathdict[temp] + self.neighborwhitway()[temp,i]:
                 pathdict[i] = pathdict[temp] +self.neighborwhitway()[temp,i]
-                firststep.append(pathdict[i])
+                firststep.append(i)
 
         outlist.add(temp)
-        current = min(firststep)
-        
+        current = float('inf')
+        for f in firststep:
+            if pathdict[f] < current:
+                current = f
+        print(current)
         while TempNodeList != outlist:
+            if current == float('inf'):
+                break
             currentlist = []
             for j in TempNodewithNeighbour[current]:
                 if j not in outlist:
@@ -132,7 +137,7 @@ class Graph():
                     
 
                 
-new_graph = Graph(b)
+new_graph = Graph(a)
 # new_graph.add(10,15,20)
 # new_graph.traverse()
 # print(new_graph.find(1))
@@ -141,5 +146,5 @@ new_graph = Graph(b)
 # print('====================')
 # print(new_graph.neighborwhitway())
 # print('=====================')
-new_graph.shortestpath(1,4)
+new_graph.shortestpath(1,9)
 # new_graph.nodeset()
