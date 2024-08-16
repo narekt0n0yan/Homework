@@ -1,0 +1,8 @@
+Lib
+Scripts
+pyvenv.cfg
+.idea
+share
+__pycache__
+luclude
+printinfile

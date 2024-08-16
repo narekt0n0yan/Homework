@@ -43,6 +43,7 @@ class BinarTree():
         if value == current_node.value:
             return False
         is_left = False
+        
         while current_node.value != value:
             if current_node.value > value:
                 prev_node = current_node
@@ -54,6 +55,9 @@ class BinarTree():
                 is_left = False
 
         print('HERE I AM', current_node, current_node.left, current_node.right, prev_node)
+       
+       
+       
         if current_node.left is None:
             if  is_left:
                 prev_node.left = current_node.right
