@@ -12,5 +12,4 @@
 
 
 a = str(123)
-a.removesuffix
 print(a)

@@ -1,8 +1,8 @@
 def zeromatrix(image: list):
     matrix_list = []
-    for _ in range(len(image)): 
+    for _ in range(len(image)-2): 
         a = []       
-        for __ in range(len(image[0])):
+        for __ in range(len(image[0])-2):
             a.append(0)
         matrix_list.append(a)
     return matrix_list
